@@ -78,6 +78,16 @@ header {
 
 
 }
+#btnRestart{
+	width: 100px;
+	height: 50px;
+	padding: 1% 0;
+	text-align: center;
+	background-color: orange;
+	float: left;
+	clear: both;
+
+}
 
 .attacker{
 
@@ -88,6 +98,10 @@ header {
 
 	background-color: red;
 	border-color: red;
+}
+
+.invisible{
+	visibility: hidden;
 }
 
 

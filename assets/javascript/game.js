@@ -17,6 +17,7 @@ var game = {
 		{
 			name: "Harry Potter",
 			attack: 8,
+			attackMultiplier: 8,
 			counterAttack: 8,
 			hp: 120,
 			hpId: "hpPotter",
@@ -26,6 +27,7 @@ var game = {
 		{
 			name: "Draco Malfoy",
 			attack: 10,
+			attackMultiplier: 10,
 			counterAttack: 10,
 			hp: 100,
 			hpId: "hpMalfoy",
@@ -35,6 +37,7 @@ var game = {
 		{
 			name: "Hermione Granger",
 			attack: 5,
+			attackMultiplier: 5,
 			counterAttack: 15,
 			hp: 150,
 			hpId: "hpGranger",
@@ -44,6 +47,7 @@ var game = {
 		{
 			name: "Cedric Diggory",
 			attack: 12,
+			attackMultiplier: 12,
 			counterAttack: 10,
 			hp: 160,
 			hpId: "hpDiggory",
@@ -88,6 +92,7 @@ $('.character').on("click", function(event){
 		$('.defender').append(defender);
 		game.defender = game.characters[defenderId];
 		game.defenderSelected = true;
+		$('#btnAttack').removeClass("invisible");
 
 	};
 
@@ -109,6 +114,9 @@ $('#btnAttack').on('click', function(){
 				game.enemiesDefeated += 1;
 				if(game.enemiesDefeated == 3){
 					alert("You are a grand duelist!!");
+					$('#btnRestart').removeClass("invisible");
+					$('#btnAttack').addClass("invisible");
+
 
 				};
 			};
