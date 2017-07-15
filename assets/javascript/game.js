@@ -7,6 +7,7 @@ var game = {
 	defender: {},
 	characterSelected: false,
 	defenderSelected: false,
+	enemiesDefeated: 0,
 
 
 
@@ -90,6 +91,28 @@ $('.character').on("click", function(event){
 
 	};
 
+
+});
+
+$('#btnAttack').on('click', function(){
+
+	if(game.characterSelected && game.defenderSelected){
+		// ATTACK -------------------------------------------------------------------
+			game.defender.hp = game.defender.hp - game.yourCharacter.attack;
+			$('#' + game.defender.hpId).html(game.defender.hp);
+			game.yourCharacter.attack = game.yourCharacter.attack * 2;
+			//Check if defender is defeated
+			if(game.defender.hp <= 0){
+				$('.defenderChar').remove();
+				game.defenderSelected = false;
+				alert("you defeated " + game.defender.name + "!!");
+				game.enemiesDefeated += 1;
+				if(game.enemiesDefeated == 3){
+					alert("You are a grand duelist!!");
+
+				};
+			};
+	};
 
 });
 
