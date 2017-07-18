@@ -76,6 +76,9 @@ game.startGame();
 
 $('.character').on("click", function(event){
 	if(game.characterSelected == false){
+		$('.yourCharacter').removeClass('invisible');
+		$('.defender').removeClass('invisible');
+		$('.enemiesLeft').removeClass('invisible');
 		var chosenCharId = $(this).attr("id");
 		var chosenChar = $(this);
 		chosenChar.addClass("attacker");
@@ -103,25 +106,35 @@ $('#btnAttack').on('click', function(){
 
 	if(game.characterSelected && game.defenderSelected){
 		// ATTACK -------------------------------------------------------------------
+			$(".attacker").effect("shake");
 			game.defender.hp = game.defender.hp - game.yourCharacter.attack;
 			$('#' + game.defender.hpId).html(game.defender.hp);
-			game.yourCharacter.attack = game.yourCharacter.attack * 2;
+			game.yourCharacter.attack = game.yourCharacter.attack + game.yourCharacter.attackMultiplier;
 			//Check if defender is defeated
 			if(game.defender.hp <= 0){
 				$('.defenderChar').remove();
 				game.defenderSelected = false;
 				alert("you defeated " + game.defender.name + "!!");
 				game.enemiesDefeated += 1;
+				//Check if all characters have been defeated
 				if(game.enemiesDefeated == 3){
 					alert("You are a grand duelist!!");
 					$('#btnRestart').removeClass("invisible");
 					$('#btnAttack').addClass("invisible");
-
-
+				};
+			}else{
+		// COUNTER ATTACK -----------------------------------------------------------
+				$(".defenderChar").effect("shake");
+				game.yourCharacter.hp = game.yourCharacter.hp - game.defender.counterAttack;
+				$('#' + game.yourCharacter.hpId).html(game.yourCharacter.hp);
+				//Check if yourCharacter is defeated
+				if(game.yourCharacter.hp <= 0){
+					$('#btnAttack').addClass("invisible");
+					$('#btnRestart').removeClass("invisible");
+					alert("You have been defeated by " + game.defender.name + "... :'(");
 				};
 			};
 	};
-
 });
 
 

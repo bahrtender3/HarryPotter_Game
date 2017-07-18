@@ -3,6 +3,9 @@
 <head>
 	<title>Harry Potter Duel</title>
 
+	<link href="https://fonts.googleapis.com/css?family=Calligraffitti|Lobster+Two" rel="stylesheet">
+
+
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
@@ -10,19 +13,17 @@
 
 	<header>Harry Potter Duel</header>
 
-	<div id="selectCharacters">
+	<div id="selectCharacters"></div>
 
+	<div class="yourCharacter invisible">
+		<h1>Your Character</h1>
 	</div>
 
-	<div class="yourCharacter">
-		<h1>Your Character:</h1>
-	</div>
-
-	<div class="defender">
+	<div class="defender invisible">
 		<h1>Defender</h1>
 	</div>
 
-	<div class="enemiesLeft">
+	<div class="enemiesLeft invisible">
 		<h1>Enemies Left to Attack</h1>
 	</div>
 
@@ -31,6 +32,10 @@
 
 	<!-- jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 
     <!-- Script -->
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
