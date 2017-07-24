@@ -79,6 +79,7 @@ $('.character').on("click", function(event){
 		$('.yourCharacter').removeClass('invisible');
 		$('.defender').removeClass('invisible');
 		$('.enemiesLeft').removeClass('invisible');
+		$('.dialogue').removeClass('invisible');
 		var chosenCharId = $(this).attr("id");
 		var chosenChar = $(this);
 		chosenChar.addClass("attacker");
@@ -92,6 +93,8 @@ $('.character').on("click", function(event){
 		var defenderId = $(this).attr("id");
 		var defender = $(this);
 		defender.addClass('defenderChar');
+		// $('.defender').empty();
+		$('.defender').html("<h1>Defender</h1>")
 		$('.defender').append(defender);
 		game.defender = game.characters[defenderId];
 		game.defenderSelected = true;
@@ -109,12 +112,14 @@ $('#btnAttack').on('click', function(){
 			$(".attacker").effect("shake");
 			game.defender.hp = game.defender.hp - game.yourCharacter.attack;
 			$('#' + game.defender.hpId).html(game.defender.hp);
+			$('.dialogue').html("<p>You damaged " + game.defender.name + ": " + game.yourCharacter.attack + "</p>");
+			$('.dialogue').append("<p>" + game.defender.name + " damaged you: " + game.defender.counterAttack + "</p>");			
 			game.yourCharacter.attack = game.yourCharacter.attack + game.yourCharacter.attackMultiplier;
 			//Check if defender is defeated
 			if(game.defender.hp <= 0){
 				$('.defenderChar').remove();
 				game.defenderSelected = false;
-				alert("you defeated " + game.defender.name + "!!");
+				$('.dialogue').html("<p>you defeated " + game.defender.name + "!!</p>");
 				game.enemiesDefeated += 1;
 				//Check if all characters have been defeated
 				if(game.enemiesDefeated == 3){
@@ -137,6 +142,10 @@ $('#btnAttack').on('click', function(){
 	};
 });
 
+$('#btnRestart').on('click', function(){
+
+	location.reload();
+})
 
 
 

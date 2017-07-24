@@ -77,8 +77,19 @@ h1 {
 }
 
 .enemiesLeft{
-	width: 100%;
+	width: 50%;
+	float: left;
 	clear: left;
+
+}
+.dialogue {
+	color: #d3a625;
+	width: 30%;
+	float: left;
+	padding-left: 20%;
+	margin-top: 10%;
+	font-family: 'Lobster Two', cursive;
+	font-size: 25px;
 
 }
 
@@ -108,12 +119,23 @@ h1 {
 #btnRestart{
 	width: 100px;
 	height: 50px;
-	padding: 1% 0;
+	padding: 0% 0;
 	text-align: center;
 	background-color: orange;
-	float: left;
-	clear: both;
+	float: right;
+	/*clear: both;*/
+	color: black;
+	font-family: 'Calligraffitti', cursive;
+	font-size: 20px;
+	border-radius: 50px;
+	position: fixed;
+	right: 47%;
+	top: 20%;
+}
 
+#btnRestart:hover{
+	background: black;
+	color: orange;
 }
 
 .attacker{
